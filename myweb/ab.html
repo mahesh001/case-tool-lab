@@ -1,0 +1,24 @@
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "onlinestore";
+
+// Create connection
+$conn =new mysqli("localhost","root","","onlinestore");
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$q="Insert into user (username,password,fullname) values('".$username."','".$password."','".$fname."')";
+
+if (mysqli_query($conn, $q)) {
+    echo "New record created successfully";
+} else {
+    echo "user already exist! " . $sql . "<br>" . mysqli_error($conn);
+    header('Location: login.html');
+}
+
+mysqli_close($conn);
+?>
